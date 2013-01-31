@@ -58,8 +58,22 @@ public class Solicitud {
         System.out.println(cadena.substring(x, x+1)+" no es un entero");
         return false;
       } 
-    }
+        }
     return true;
+  }
+  
+  public double pedirCantidad() throws Exception{
+    double cantidad = 0;
+    try{
+      System.out.println("Introduce la cantidad:");
+      cantidad = leer.nextDouble();
+      if(cantidad <= 0) throw new IllegalArgumentException("Sólo números mayores que 0");
+    }catch(NumberFormatException nfe){
+            System.err.println("Sólo son válidos valores numéricos.");
+    }catch(IllegalArgumentException iae){
+        System.err.println(iae);
+    }
+    return cantidad;
   }
   
   
@@ -67,7 +81,7 @@ public class Solicitud {
    * Método para mostrar el menú de opciones 
    * y solicitar la opción a elegir
    */
-  public int menu(){
+  public String menu(){
     System.out.println("Opciones de la Cuenta Bancaria");
     System.out.println("==============================");
     System.out.println("1 - Ver el número de cuenta completo");
@@ -79,11 +93,10 @@ public class Solicitud {
     System.out.println("7 - Realizar un ingreso");
     System.out.println("8 - Retirar efectivo");
     System.out.println("9 - Consultar saldo");
-    System.out.println("10- Comprobar el número de cuenta");
     System.out.println("0 - Salir de la aplicación");
     System.out.println("--------------------");
     System.out.println("  Introduce una opción:");
-    int opcion = leer.nextInt();
+    String opcion = leer.next();
     return opcion;
   }
 }

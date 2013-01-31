@@ -15,17 +15,19 @@ public class CuentaBancaria {
    * @param titular
    * @param cuenta 
    */
-  public CuentaBancaria(String titular, String cuenta) {
-    if (this.obtenerDigitosControl(this.cuenta) == this.cuenta.substring(8,10)){
+  public CuentaBancaria(String titular, String cta) throws Exception {
+    if(this.obtenerDigitosControl(cta).equals(cta.substring(8,10))){
       this.titular = titular;
       this.cuenta = cuenta;
-    }      
+      this.saldo = 0;
+    }else{
+      System.out.println("No es una cuenta correcta");
+    }
   }
-  
-  
-  public CuentaBancaria(int sal){
-    this.saldo = sal;
-  }
+   
+//  public CuentaBancaria(int sal){
+//    this.saldo = sal;
+//  }
 
   public String getTitular() {
     return titular;
@@ -58,7 +60,6 @@ public class CuentaBancaria {
    * @return 
    */
   public String verEntidad(){
-    
     return this.getCuenta().substring(0,4);
   }
   
@@ -67,7 +68,6 @@ public class CuentaBancaria {
    * @return 
    */
   public String verOficina(){
-    
     return this.getCuenta().substring(4,8);
   }
   
@@ -75,9 +75,20 @@ public class CuentaBancaria {
    * Método get que devuelve los 10 dígitos de la cuenta
    * @return 
    */
-  public String verDigitosCuenta(){
-    
+  public String verDigitosCuenta(){   
     return this.getCuenta().substring(10,20);
+  }
+  
+  public void ingresar(double cantidad){
+    this.saldo = this.saldo + cantidad;
+  }
+  
+  public void retirar(double cantidad){
+    if (cantidad > this.saldo){
+      System.out.println("No se puede retirar más dinero del que tienes");
+    }else{
+      this.saldo = this.saldo - cantidad;
+    }    
   }
   
   /**
