@@ -1,7 +1,7 @@
 package ProgCuentaBancaria;
 
 /**
- *
+ * Clase con que realiza todas las operaciones solicitadas en el menú
  * @author theasker
  */
 public class CuentaBancaria {
@@ -17,9 +17,18 @@ public class CuentaBancaria {
   public String getTitular() {
     return titular;
   }
-
+  
+  /**
+   * 
+   * @return <code>cuenta</code>
+   */
   public String getCuenta() {
-    return cuenta;
+    String cta;
+    cta = this.cuenta.substring(0, 4)+"-";
+    cta += this.cuenta.substring(4, 8)+"-";
+    cta += this.cuenta.substring(8, 10)+"-";
+    cta += this.cuenta.substring(10, 20);
+    return cta;
   }
 
   public double getSaldo() {

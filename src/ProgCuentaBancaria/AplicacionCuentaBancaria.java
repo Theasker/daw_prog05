@@ -18,7 +18,8 @@ public class AplicacionCuentaBancaria {
     pide = new Solicitud();
     
     // Instancio la clase de operaciones
-    cuenta = new CuentaBancaria(pide.pedirTitular(),pide.pedirCuenta());
+    //cuenta = new CuentaBancaria(pide.pedirTitular(),pide.pedirCuenta());
+    cuenta = new CuentaBancaria("Mauri","12345678901234567890");
     int opcion = 0;
     do{
       opcion = pide.menu(); // Mostramos el menu
@@ -26,7 +27,7 @@ public class AplicacionCuentaBancaria {
         case 0:
           break;
         case 1:
-            
+          System.out.println(cuenta.getCuenta());
           break;
         case 2:
             

@@ -15,7 +15,7 @@ public class Solicitud {
   public String pedirTitular(){
     String titular = "x";
     do{
-      System.out.println("Introduce el nombre del titular de la cuenta:");
+      System.out.println("Introduce el nombre del titular de la cuenta (5-50):");
       titular = leer.next();
     }while ((titular.length() < 5) || (titular.length() > 50));
     return titular;
