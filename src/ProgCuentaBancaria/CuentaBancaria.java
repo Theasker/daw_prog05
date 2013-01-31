@@ -30,5 +30,13 @@ public class CuentaBancaria {
     this.saldo = saldo;
   }
   
-  
+  /**
+   * Módulo para el cálculo de los dígitos de control.
+   */
+  public static String obtenerDigitosControl(String cuenta){
+    String digitos = "00";
+    
+    
+    return digitos;
+  }
 }

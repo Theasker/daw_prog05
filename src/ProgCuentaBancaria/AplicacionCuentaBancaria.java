@@ -18,8 +18,10 @@ public class AplicacionCuentaBancaria {
     pide = new Solicitud();
     
     // Instancio la clase de operaciones
-    cuenta = new CuentaBancaria(pide.PedirTitular(),pide.PedirCuenta());
-    
-    
+    cuenta = new CuentaBancaria(pide.pedirTitular(),pide.pedirCuenta());
+    int opcion = 0;
+    do{
+      opcion = pide.menu();
+    }while(opcion != 0);
   }
 }
