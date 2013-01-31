@@ -68,8 +68,8 @@ public class Solicitud {
    * y solicitar la opción a elegir
    */
   public int menu(){
-    System.out.println("  menu de opciones  ");
-    System.out.println("--------------------");
+    System.out.println("Opciones de la Cuenta Bancaria");
+    System.out.println("==============================");
     System.out.println("1 - Ver el número de cuenta completo");
     System.out.println("2 - Ver el titular de la cuenta");
     System.out.println("3 - Ver el código de la entidad");
