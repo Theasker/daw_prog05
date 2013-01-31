@@ -8,39 +8,98 @@ public class CuentaBancaria {
   private String titular;
   private String cuenta;
   private double saldo;
+  private boolean correcto = false;
 
+  /**
+   * Constructor que rellena las variables titular y cuenta
+   * @param titular
+   * @param cuenta 
+   */
   public CuentaBancaria(String titular, String cuenta) {
-    this.titular = titular;
-    this.cuenta = cuenta;
+    if (this.obtenerDigitosControl(this.cuenta) == this.cuenta.substring(8,10)){
+      this.titular = titular;
+      this.cuenta = cuenta;
+    }      
+  }
+  
+  
+  public CuentaBancaria(int sal){
+    this.saldo = sal;
   }
 
   public String getTitular() {
     return titular;
   }
-  
+
   /**
-   * 
+   * Método get que devuelve el número de cuenta solamente
    * @return <code>cuenta</code>
    */
   public String getCuenta() {
+    return cuenta;
+  }
+  
+  /**
+   * Método get que devuelve el número de cuenta bonito
+   * @return <code>cta</code>
+   */
+  public String verCuenta() {
     String cta;
-    cta = this.cuenta.substring(0, 4)+"-";
+    cta = "El número de cuenta es: ";
+    cta += this.cuenta.substring(0, 4)+"-";
     cta += this.cuenta.substring(4, 8)+"-";
-    cta += this.cuenta.substring(8, 10)+"-";
+    cta += this.obtenerDigitosControl(this.cuenta) +"-";
     cta += this.cuenta.substring(10, 20);
     return cta;
   }
 
+  /**
+   * Método get que devuelve el número de la entidad
+   * @return 
+   */
+  public String verEntidad(){
+    
+    return this.getCuenta().substring(0,4);
+  }
+  
+  /**
+   * Método get que devuelve el número de la oficina
+   * @return 
+   */
+  public String verOficina(){
+    
+    return this.getCuenta().substring(4,8);
+  }
+  
+  /**
+   * Método get que devuelve los 10 dígitos de la cuenta
+   * @return 
+   */
+  public String verDigitosCuenta(){
+    
+    return this.getCuenta().substring(10,20);
+  }
+  
+  /**
+   * Método get que devuelve el saldo de la cuenta
+   * @return <code>cuenta</code>
+   */
   public double getSaldo() {
     return saldo;
   }
-
+  
+  /**
+   * 
+   * @param saldo 
+   */
   public void setSaldo(double saldo) {
     this.saldo = saldo;
   }
   
   /**
    * Módulo para el cálculo de los dígitos de control.
+   * @param cuenta
+   * @return 
    */
   public static String obtenerDigitosControl(String cuenta){
     // Inicializamos las variables para las operaciones
@@ -52,6 +111,7 @@ public class CuentaBancaria {
     // Sumamos cada dígito de entidad y oficina (d1), 
     // por la misma posición del array multiplica
     // nos saltamos las 2 primeras posiciones del multiplicador
+    
     for (cont = 0;cont < (multiplica.length - 2);cont++){
       d1 += multiplica[cont+2] * Integer.parseInt(cuenta.substring(cont, cont+1));
     }

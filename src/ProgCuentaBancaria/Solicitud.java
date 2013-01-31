@@ -79,6 +79,7 @@ public class Solicitud {
     System.out.println("7 - Realizar un ingreso");
     System.out.println("8 - Retirar efectivo");
     System.out.println("9 - Consultar saldo");
+    System.out.println("10- Comprobar el número de cuenta");
     System.out.println("0 - Salir de la aplicación");
     System.out.println("--------------------");
     System.out.println("  Introduce una opción:");
