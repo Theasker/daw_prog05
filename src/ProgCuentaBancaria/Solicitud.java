@@ -1,16 +1,17 @@
 package ProgCuentaBancaria;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Clase donde se hacen las peticiones por teclado
+ * @author theasker
  */
-
 public class Solicitud {
   Scanner leer = new Scanner(System.in);
 
   /**
    * Método para solicitar el titular de la cuenta
+   * @return 
    */
   public String pedirTitular(){
     String titular = "x";
@@ -23,6 +24,7 @@ public class Solicitud {
 
   /**
    * Método para solicitar el número de cuenta.
+   * @return 
    */
   public String pedirCuenta(){
     boolean comprueba = false;
@@ -48,6 +50,8 @@ public class Solicitud {
   
   /**
    * Método que comprueba que una cadena está compuesta por números enteros
+   * @param cadena
+   * @return 
    */
   public boolean sonEnteros(String cadena){
     
@@ -62,24 +66,42 @@ public class Solicitud {
     return true;
   }
   
+  /**
+   * Método usado para solicitar la cantidad 
+   * a retirar o ingresar de la cuenta
+   * @return
+   * @throws Exception 
+   */
   public double pedirCantidad() throws Exception{
+    String dato;
     double cantidad = 0;
-    try{
-      System.out.println("Introduce la cantidad:");
-      cantidad = leer.nextDouble();
-      if(cantidad <= 0) throw new IllegalArgumentException("Sólo números mayores que 0");
-    }catch(NumberFormatException nfe){
-            System.err.println("Sólo son válidos valores numéricos.");
-    }catch(IllegalArgumentException iae){
-        System.err.println(iae);
-    }
+    boolean error;
+    do{
+      try{
+        System.out.println("Introduce la cantidad:");
+        error = false;
+        dato = leer.next();
+        cantidad = Double.parseDouble(dato);
+        if(cantidad < 0){
+          throw new Exception("No se puede ingresar una cantidad negativa");
+        }
+      }catch(NumberFormatException e){
+        System.out.println(e.getMessage());
+        System.out.println("introduce ún número entero");
+        error=true;
+      }catch(Exception e){
+        System.out.println(e.getMessage());
+        //System.out.println("Excepción desconocida");
+        error=true;
+      }
+    }while(error);
     return cantidad;
   }
-  
   
   /**
    * Método para mostrar el menú de opciones 
    * y solicitar la opción a elegir
+   * @return opcion
    */
   public String menu(){
     System.out.println("Opciones de la Cuenta Bancaria");

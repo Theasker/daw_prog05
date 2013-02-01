@@ -16,19 +16,20 @@ public class CuentaBancaria {
    * @param cuenta 
    */
   public CuentaBancaria(String titular, String cta) throws Exception {
+    // Comparación de objetos (Strings) con .equeals
     if(this.obtenerDigitosControl(cta).equals(cta.substring(8,10))){
       this.titular = titular;
-      this.cuenta = cuenta;
+      this.cuenta = cta;
       this.saldo = 0;
     }else{
       System.out.println("No es una cuenta correcta");
     }
   }
-   
-//  public CuentaBancaria(int sal){
-//    this.saldo = sal;
-//  }
 
+  /**
+   * Método que devuelve el titular de la cuenta
+   * @return 
+   */
   public String getTitular() {
     return titular;
   }
@@ -79,10 +80,19 @@ public class CuentaBancaria {
     return this.getCuenta().substring(10,20);
   }
   
+  /**
+   * Método que ingresa una cantidad en cuenta
+   * @param cantidad 
+   */
   public void ingresar(double cantidad){
     this.saldo = this.saldo + cantidad;
   }
   
+  /**
+   * Método que retira una cantidad de la cuenta controlando 
+   * que no se intente sacar más cantidad de la que hay
+   * @param cantidad 
+   */
   public void retirar(double cantidad){
     if (cantidad > this.saldo){
       System.out.println("No se puede retirar más dinero del que tienes");
@@ -100,7 +110,7 @@ public class CuentaBancaria {
   }
   
   /**
-   * 
+   * Método que devuelve el saldo en cuenta
    * @param saldo 
    */
   public void setSaldo(double saldo) {
