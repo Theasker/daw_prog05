@@ -5,9 +5,9 @@ package ProgCuentaBancaria;
  * @author theasker
  */
 public class CuentaBancaria {
-  private String titular;
-  private String cuenta;
-  private double saldo;
+  private String titular; // Titular de la cuenta
+  private String cuenta; // Número de cuenta
+  private double saldo; // Saldo de la cuenta
   private boolean correcto = false;
 
   /**
@@ -16,15 +16,11 @@ public class CuentaBancaria {
    * @param cuenta Los 20 dígitos de cuenta
    */
   public CuentaBancaria(String titular, String cta) throws Exception {
-    // Comparación de objetos (Strings) con .equeals
-    if(this.obtenerDigitosControl(cta).equals(cta.substring(8,10))){
+    // Sólo guarda los datos cuando son correctos
+    // Ya que se comprueban el el método que se piden los datos
       this.titular = titular;
       this.cuenta = cta;
       this.saldo = 0;
-    }else{
-      System.out.println("No es una cuenta correcta");
-      
-    }
   }
 
   /**

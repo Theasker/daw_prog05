@@ -59,11 +59,11 @@ public class Solicitud {
    * @return 
    */
   public boolean sonEnteros(String cadena){
-    
+    // Recorre la cadena entera comprobando si es número entero o no
     for (int x = 0;x < cadena.length();x++){
       try{
          Integer.parseInt(cadena.substring(x, x+1));
-      }catch(NumberFormatException e){
+      }catch(NumberFormatException e){ //Se ejecuta cuando no es un nº entero
         System.out.println(cadena.substring(x, x+1)+" no es un entero");
         return false;
       } 
