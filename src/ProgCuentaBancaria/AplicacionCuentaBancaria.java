@@ -6,24 +6,25 @@ import java.util.InputMismatchException;
 /**
  * Clase con el main desde las que llamamos a todas las demás
  * @author Mauricio Segura Ariño
+ * @see http://daw.xtrweb.com/dokuwiki
  */
 public class AplicacionCuentaBancaria {
   
   static CuentaBancaria cuenta;
   static Solicitud pide;
+
   public static void main(String[] args) throws Exception{
     // Instancio la clase para solicitar de teclado
     pide = new Solicitud();
     
     // Instancio la clase de operaciones
-    //cuenta = new CuentaBancaria(pide.pedirTitular(),pide.pedirCuenta());
-    cuenta = new CuentaBancaria("Mauri","12345678061234567890");
+    cuenta = new CuentaBancaria(pide.pedirTitular(),pide.pedirCuenta());
+    // opcion para las diferentes secciones del menú
     int opcion = 0;
-    
     do{ // Se ejecuta hasa que introducimos un 0
       try{
         opcion = Integer.parseInt(pide.menu()); // Mostramos el menu
-      }catch (NumberFormatException nfe){
+      }catch (NumberFormatException nfe){ 
         System.err.println("Sólo valores entre 0 y 9 carácteres no");
         opcion = 10;
       }
@@ -60,7 +61,6 @@ public class AplicacionCuentaBancaria {
         default:
           System.out.println("Introduzca un valor entre 0 y 10");
       }
-      
     }while(opcion != 0);
   }
 }

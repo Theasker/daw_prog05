@@ -12,8 +12,8 @@ public class CuentaBancaria {
 
   /**
    * Constructor que rellena las variables titular y cuenta
-   * @param titular
-   * @param cuenta 
+   * @param titular Es el titular de la cuenta
+   * @param cuenta Los 20 dígitos de cuenta
    */
   public CuentaBancaria(String titular, String cta) throws Exception {
     // Comparación de objetos (Strings) con .equeals
@@ -23,12 +23,13 @@ public class CuentaBancaria {
       this.saldo = 0;
     }else{
       System.out.println("No es una cuenta correcta");
+      
     }
   }
 
   /**
    * Método que devuelve el titular de la cuenta
-   * @return 
+   * @return titular 
    */
   public String getTitular() {
     return titular;
@@ -36,7 +37,7 @@ public class CuentaBancaria {
 
   /**
    * Método get que devuelve el número de cuenta solamente
-   * @return <code>cuenta</code>
+   * @return cuenta
    */
   public String getCuenta() {
     return cuenta;
@@ -44,7 +45,7 @@ public class CuentaBancaria {
   
   /**
    * Método get que devuelve el número de cuenta bonito
-   * @return <code>cta</code>
+   * @return cta (1234-5648-90-123456789
    */
   public String verCuenta() {
     String cta;
@@ -58,7 +59,7 @@ public class CuentaBancaria {
 
   /**
    * Método get que devuelve el número de la entidad
-   * @return 
+   * @return dígitos de cuenta
    */
   public String verEntidad(){
     return this.getCuenta().substring(0,4);
@@ -66,7 +67,7 @@ public class CuentaBancaria {
   
   /**
    * Método get que devuelve el número de la oficina
-   * @return 
+   * @return dígitos de oficina
    */
   public String verOficina(){
     return this.getCuenta().substring(4,8);
@@ -74,7 +75,7 @@ public class CuentaBancaria {
   
   /**
    * Método get que devuelve los 10 dígitos de la cuenta
-   * @return 
+   * @return 10 número de cuenta
    */
   public String verDigitosCuenta(){   
     return this.getCuenta().substring(10,20);
@@ -82,7 +83,7 @@ public class CuentaBancaria {
   
   /**
    * Método que ingresa una cantidad en cuenta
-   * @param cantidad 
+   * @param cantidad Cantidad a ingresar
    */
   public void ingresar(double cantidad){
     this.saldo = this.saldo + cantidad;
@@ -91,7 +92,7 @@ public class CuentaBancaria {
   /**
    * Método que retira una cantidad de la cuenta controlando 
    * que no se intente sacar más cantidad de la que hay
-   * @param cantidad 
+   * @param cantidad Cantidad a retirr
    */
   public void retirar(double cantidad){
     if (cantidad > this.saldo){
@@ -103,18 +104,10 @@ public class CuentaBancaria {
   
   /**
    * Método get que devuelve el saldo de la cuenta
-   * @return <code>cuenta</code>
+   * @return saldo Saldo pendiente en la cuenta
    */
   public double getSaldo() {
     return saldo;
-  }
-  
-  /**
-   * Método que devuelve el saldo en cuenta
-   * @param saldo 
-   */
-  public void setSaldo(double saldo) {
-    this.saldo = saldo;
   }
   
   /**

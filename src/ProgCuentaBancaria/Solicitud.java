@@ -42,6 +42,11 @@ public class Solicitud {
         comprueba = this.sonEnteros(cuenta);
         if (comprueba == false){ // No son enteros
           System.out.println("Hay que introducir digitos");
+        }else{ // Los dígitos son enteros y comprobamos los digitos de control
+          //Calculamos los dígitos de control y los comparamos con lo introducidos
+          if(CuentaBancaria.obtenerDigitosControl(cuenta).equals(cuenta.substring(8,10))){
+            comprueba = true; // Son correctos los dígitos de control
+          }else comprueba = false;
         }
       }
     }while (comprueba == false);
@@ -69,7 +74,7 @@ public class Solicitud {
   /**
    * Método usado para solicitar la cantidad 
    * a retirar o ingresar de la cuenta
-   * @return
+   * @return cantidad
    * @throws Exception 
    */
   public double pedirCantidad() throws Exception{
