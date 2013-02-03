@@ -25,7 +25,7 @@ public class CuentaBancaria {
 
   /**
    * Método que devuelve el titular de la cuenta
-   * @return titular 
+   * @return titular
    */
   public String getTitular() {
     return titular;
@@ -41,7 +41,7 @@ public class CuentaBancaria {
   
   /**
    * Método get que devuelve el número de cuenta bonito
-   * @return cta (1234-5648-90-123456789
+   * @return cta (1234-5648-90-123456789)
    */
   public String verCuenta() {
     String cta;
